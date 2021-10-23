@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 
-const useFetchUsers = (url) =>{
+const useFetchUsers = () =>{
 
-    console.log('Fetch User component');
-    console.log(url);
-
+console.log('Fetch User component');
+ 
+const [page, setPage] = useState(1);
+const [url,setUrl] = useState(`https://randomuser.me/api/?page=${page}&results=10`);
 const [users, setUsers] = useState([]);
 const [status, setStatus] = useState('fetching');
+console.log(page)
 
 
 useEffect(()=>{
@@ -19,7 +21,7 @@ useEffect(()=>{
    })
 }, [])
 
-return {status, users};
+return {status, users, setPage};
 
 }
 
