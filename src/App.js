@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
 // import useIncrement  from './useIncrement';
-import useFetchUsers from './useFetchUsers';
+//import useFetchUsers from './useFetchUsers';
+import useCountHook from './useCountHook';
 
 function App() {
   
-  const {status, users, setPage} = useFetchUsers(null);
+  const [count, setCount] = useCountHook();
+  
   return (
     <>
     <h3>Custom Hooks</h3>
-    {status === 'fetching' ? <p>Fetching</p> :
-    <>
-    <button onClick = {()=> setPage((page)=>page+1)}>Change Page </button>
-    {console.log(users)}
-    </>}
+    <p>Count: {count}</p>
+    <button onClick = {()=> setCount(count => count + 1)}>Click</button>
     
     </>
   );
